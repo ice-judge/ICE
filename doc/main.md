@@ -1,3 +1,5 @@
-# intro
+# api 문서
 
-[test](api/api.md)
+[문제 관련 api](api/api.md)
+
+# 설정 관련
