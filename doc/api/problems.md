@@ -8,19 +8,19 @@
 
 ### 쿼리
 
-{orderby} 정렬기준
-
-{dir} 정렬방향(오름차순 내림차순)
-
-{p} 페이지
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| orderby  | 정렬기준 |   |
+| dir | 정렬방향(오름차순 내림차순) |   |
+| p | 페이지 | int |
 
 ### 출력
 
-problems:문제[]
-
-prev_pages:페이지링크[]
-
-next_pages:페이지링크[]
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| problems |   | 문제[] |
+| prev_pages |   | 페이지링크[] |
+| next_pages |   | 페이지링크[] |
 
 ## /problems/difficulty/{difficulty} GET
 
@@ -30,23 +30,26 @@ next_pages:페이지링크[]
 
 ### URL
 
-{difficulty} 난이도
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| difficulty | 난이도 |   |
 
 ### 쿼리
 
-{orderby} 정렬기준
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| orderby  | 정렬기준 |   |
+| dir | 정렬방향(오름차순 내림차순) |   |
+| p | 페이지 | int |
 
-{dir} 정렬방향(오름차순 내림차순)
-
-{p} 페이지
 
 ### 출력
 
-problems:문제[]
-
-prev_pages:페이지링크[]
-
-next_pages:페이지링크[]
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| problems |   | 문제[] |
+| prev_pages |   | 페이지링크[] |
+| next_pages |   | 페이지링크[] |
 
 ## /problems/search GET
 
@@ -56,21 +59,20 @@ next_pages:페이지링크[]
 
 ### 쿼리
 
-{q} 키워드 ( {기준}:{키워드}, ... ) ( ex)tag:hoy!,name:hoi! )
-
-{orderby} 정렬기준
-
-{dir} 정렬방향
-
-{p} 페이지
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| q | 키워드 | ( {기준}:{키워드}, ... ) ( ex)tag:hoy!,name:hoi! ) |
+| orderby  | 정렬기준 |   |
+| dir | 정렬방향(오름차순 내림차순) |   |
+| p | 페이지 | int |
 
 ### 출력
 
-problems:문제[]
-
-prev_pages:페이지링크[]
-
-next_pages:페이지링크[]
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| problems |   | 문제[] |
+| prev_pages |   | 페이지링크[] |
+| next_pages |   | 페이지링크[] |
 
 ## /problems/tag/{tag} GET
 
@@ -84,20 +86,19 @@ next_pages:페이지링크[]
 
 ### 쿼리
 
-{orderby} 정렬기준
-
-{dir} 정렬방향(오름차순 내림차순)
-
-{p} 페이지
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| orderby  | 정렬기준 |   |
+| dir | 정렬방향(오름차순 내림차순) |   |
+| p | 페이지 | int |
 
 ### 출력
 
-problems:문제[]
-
-prev_pages:페이지링크[]
-
-next_pages:페이지링크[]
-
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| problems |   | 문제[] |
+| prev_pages |   | 페이지링크[] |
+| next_pages |   | 페이지링크[] |
 
 ## /difficulties GET
 
@@ -107,7 +108,9 @@ next_pages:페이지링크[]
 
 ### 출력
 
-difficulties:난이도[]
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| difficulties | 태그 | 난이도[] |
 
 ## /tags
 
@@ -117,16 +120,14 @@ difficulties:난이도[]
 
 ### 쿼리
 
-{orderby} 정렬기준
-
-{dir} 정렬방향
-
-{p} 페이지 만약 없다면 첫번째 페이지
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| orderby  | 정렬기준 |   |
+| dir | 정렬방향(오름차순 내림차순) |   |
+| p | 페이지 | int |
 
 ### 출력
 
-tags:태그[]
-
-prev_pages:페이지링크[]
-
-next_pages:페이지링크[]
+| 필드 | 설명 | 값 |
+| --- | --- | --- |
+| tags | 태그 | 태그[] |
