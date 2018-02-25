@@ -2,15 +2,19 @@ package api
 
 import (
 	"github.com/gorilla/mux"
+	"github.com/ice-judge/ICE-api/ice"
 )
 
 // API provides a RESTful API
 type API struct {
+	ice *ice.ICE
 }
 
 // NewAPI creates a new API instance
-func NewAPI() *API {
-	return &API{}
+func NewAPI(ice *ice.ICE) *API {
+	return &API{
+		ice: ice,
+	}
 }
 
 // GetRouter will return api router
