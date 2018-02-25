@@ -1,6 +1,9 @@
 package api
 
 import (
+	"fmt"
+	"net/http"
+
 	"github.com/gorilla/mux"
 	"github.com/ice-judge/ICE-api/ice"
 )
@@ -15,6 +18,12 @@ func NewAPI(ice *ice.ICE) *API {
 	return &API{
 		ice: ice,
 	}
+}
+
+func versionHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/plain")
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprint(w, ice.Version)
 }
 
 // GetRouter will return api router
@@ -33,5 +42,8 @@ func (api *API) GetRouter() *mux.Router {
 		HandlerFunc(api.problemsSearchHandler).
 		Methods("GET")
 
+	r.Path("/version").
+		HandlerFunc(versionHandler).
+		Methods("GET")
 	return r
 }
