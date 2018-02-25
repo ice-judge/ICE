@@ -41,7 +41,7 @@ type ProblemHeader struct {
 	Title           string          `json:"title"`
 	ID              uint            `json:"id"`
 	SolveStatistics SolveStatistics `json:"statistics"`
-	Difficulty      uint            `json:"difficulty"`
+	Difficulty      string          `json:"difficulty"`
 	Tags            []string        `json:"tags"`
 }
 

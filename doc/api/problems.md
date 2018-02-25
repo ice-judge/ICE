@@ -10,17 +10,18 @@
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| orderby  | 정렬기준 |   |
-| dir | 정렬방향(오름차순 내림차순) |   |
+| orderby  | 정렬기준 | string |
+| dir | 정렬방향(오름차순 내림차순) | bool |
 | p | 페이지 | int |
 
 ### 출력
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| problems |   | 문제[] |
-| prev_pages |   | 페이지링크[] |
-| next_pages |   | 페이지링크[] |
+| problems | 문제의 간략한 정보들 | 문제헤더[] |
+| prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
+| next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
+
 
 ## /problems/difficulty/{difficulty} GET
 
@@ -32,14 +33,14 @@
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| difficulty | 난이도 |   |
+| difficulty | 난이도 | string |
 
 ### 쿼리
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| orderby  | 정렬기준 |   |
-| dir | 정렬방향(오름차순 내림차순) |   |
+| orderby  | 정렬기준 | string |
+| dir | 정렬방향(오름차순 내림차순) | bool |
 | p | 페이지 | int |
 
 
@@ -47,9 +48,10 @@
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| problems |   | 문제[] |
-| prev_pages |   | 페이지링크[] |
-| next_pages |   | 페이지링크[] |
+| problems | 문제의 간략한 정보들 | [문제헤더](../schema/problems.md)[] |
+| prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
+| next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
+
 
 ## /problems/search GET
 
@@ -62,17 +64,18 @@
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
 | q | 키워드 | ( {기준}:{키워드}, ... ) ( ex)tag:hoy!,name:hoi! ) |
-| orderby  | 정렬기준 |   |
-| dir | 정렬방향(오름차순 내림차순) |   |
+| orderby  | 정렬기준 | string |
+| dir | 정렬방향(오름차순 내림차순) | bool |
 | p | 페이지 | int |
 
 ### 출력
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| problems |   | 문제[] |
-| prev_pages |   | 페이지링크[] |
-| next_pages |   | 페이지링크[] |
+| problems | 문제의 간략한 정보들 | [문제헤더](../schema/problems.md)[] |
+| prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
+| next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
+
 
 ## /problems/tag/{tag} GET
 
@@ -89,16 +92,16 @@
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
 | orderby  | 정렬기준 |   |
-| dir | 정렬방향(오름차순 내림차순) |   |
+| dir | 정렬방향(오름차순 내림차순) | bool |
 | p | 페이지 | int |
 
 ### 출력
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| problems |   | 문제[] |
-| prev_pages |   | 페이지링크[] |
-| next_pages |   | 페이지링크[] |
+| problems | 문제의 간략한 정보들 | [문제헤더](../schema/problems.md)[] |
+| prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
+| next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
 
 ## /difficulties GET
 
@@ -122,8 +125,8 @@
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| orderby  | 정렬기준 |   |
-| dir | 정렬방향(오름차순 내림차순) |   |
+| orderby  | 정렬기준 | string |
+| dir | 정렬방향(오름차순 내림차순) | bool |
 | p | 페이지 | int |
 
 ### 출력
