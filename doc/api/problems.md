@@ -18,7 +18,7 @@
 
 | 필드 | 설명 | 값 |
 | --- | --- | --- |
-| problems | 문제의 간략한 정보들 | 문제헤더[] |
+| problems | 문제의 간략한 정보들 | [문제헤더](../schema/problems.md)[] |
 | prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
 | next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
 
