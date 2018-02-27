@@ -4,7 +4,7 @@
 
 ### 설명
 
-모든 문제들의 리스트를 불러옵니다.
+문제들의 리스트를 불러옵니다.
 
 ### 쿼리
 
@@ -12,60 +12,8 @@
 | --- | --- | --- |
 | orderby  | 정렬기준 | string |
 | dir | 정렬방향(오름차순 내림차순) | bool |
-| p | 페이지 | int |
-
-### 출력
-
-| 필드 | 설명 | 값 |
-| --- | --- | --- |
-| problems | 문제의 간략한 정보들 | [문제헤더](../schema/problems.md)[] |
-| prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
-| next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
-
-
-## /problems/difficulty/{difficulty} GET
-
-### 설명
-
-특정 난이도의 문제들의 리스트를 불러옵니다.
-
-### URL
-
-| 필드 | 설명 | 값 |
-| --- | --- | --- |
 | difficulty | 난이도 | string |
-
-### 쿼리
-
-| 필드 | 설명 | 값 |
-| --- | --- | --- |
-| orderby  | 정렬기준 | string |
-| dir | 정렬방향(오름차순 내림차순) | bool |
-| p | 페이지 | int |
-
-
-### 출력
-
-| 필드 | 설명 | 값 |
-| --- | --- | --- |
-| problems | 문제의 간략한 정보들 | [문제헤더](../schema/problems.md)[] |
-| prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
-| next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
-
-
-## /problems/search GET
-
-### 설명
-
-문제를 검색합니다.
-
-### 쿼리
-
-| 필드 | 설명 | 값 |
-| --- | --- | --- |
-| q | 키워드 | ( {기준}:{키워드}, ... ) ( ex)tag:hoy!,name:hoi! ) |
-| orderby  | 정렬기준 | string |
-| dir | 정렬방향(오름차순 내림차순) | bool |
+| tag | 태그 | string |
 | p | 페이지 | int |
 
 ### 출력
@@ -76,32 +24,6 @@
 | prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
 | next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
 
-
-## /problems/tag/{tag} GET
-
-### 설명
-
-특정 태그의 문제의 리스트를 불러옵니다.
-
-### URL
-
-{tag} 태그 만약 untag면 태그가 없는 문제들
-
-### 쿼리
-
-| 필드 | 설명 | 값 |
-| --- | --- | --- |
-| orderby  | 정렬기준 |   |
-| dir | 정렬방향(오름차순 내림차순) | bool |
-| p | 페이지 | int |
-
-### 출력
-
-| 필드 | 설명 | 값 |
-| --- | --- | --- |
-| problems | 문제의 간략한 정보들 | [문제헤더](../schema/problems.md)[] |
-| prev_pages | 이전 페이지들을의 api 주소 | 페이지링크[] |
-| next_pages | 다음 페이지들을의 api 주소 | 페이지링크[] |
 
 ## /difficulties GET
 
