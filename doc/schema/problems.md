@@ -18,4 +18,3 @@
 | --- | --- | --- |
 | solved | 풀린 횟수 | uint |
 | total | 합계 | uint |
-| rate | 해결률 | uint(0~100) |
