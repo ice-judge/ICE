@@ -7,3 +7,8 @@ vendor
 *.out
 *.swp
 *.bak
+
+# /public
+
+/public/node_modules
+/public/dist/*
