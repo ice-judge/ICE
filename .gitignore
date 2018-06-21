@@ -1,1 +1,9 @@
-./ICE-api
+vendor
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.swp
+*.bak
