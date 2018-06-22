@@ -1,4 +1,3 @@
-vendor
 *.exe
 *.dll
 *.so
@@ -7,3 +6,13 @@ vendor
 *.out
 *.swp
 *.bak
+*.swo
+
+bin
+
+# go
+vendor
+
+# public
+/public/node_modules
+/public/dist/*

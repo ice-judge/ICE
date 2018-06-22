@@ -1,5 +1,5 @@
 CC = g++
-OUTDIR = ./bin
+OUTDIR = ../builds
 FLAGS = -std=c++17 -lstdc++fs
 
 all: debug
