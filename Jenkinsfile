@@ -10,7 +10,6 @@ node {
 			checkout scm
 		}
 
-
 		def scheduler	
 		def judger
 		def web
