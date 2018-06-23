@@ -7,6 +7,7 @@ pipeline {
 		docker {
 			image "icejudge/build-agent"
 
+
 		}
 	}
 
