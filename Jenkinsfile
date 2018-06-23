@@ -46,7 +46,7 @@ node {
 		throw e
 	} finally {
 		withCredentials([string(credentialsId: "icejudge-discord-webhook", variable: "url")]) {
-			discordSend description: "Jenkins Build", link: env.BUILD_URL, successful: currentBuild.resultIsBetterOrEqualTo("SUCCESS"), title: JOB_NAME, webhookURL: "${url}"
+			discordSend description: "Jenkins Build", link: env.RUN_DISPLAY_URL, successful: currentBuild.resultIsBetterOrEqualTo("SUCCESS"), title: JOB_NAME, webhookURL: "${url}"
 		}
 		sh "docker-compose down || true"
 	}
