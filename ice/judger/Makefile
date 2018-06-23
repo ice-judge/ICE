@@ -1,6 +1,6 @@
 CC = g++
-FLAGS = -std=c++17 -lstdc++fs
 OUTDIR = ./out
+FLAGS = -std=c++17 -lstdc++fs
 
 all: debug
 

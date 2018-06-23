@@ -5,7 +5,7 @@ deps-js:
 	cd ./ice/public && npm install 
 
 build-judger:
-	cd ./ice/judger && make release
+	cd ./ice/judger && mkdir out && make release
 
 build-scheduler:
 	go build ./ice/scheduler
