@@ -3,7 +3,7 @@ package router_test
 import (
 	"testing"
 
-	. "github.com/ice-judge/ICE/api/router"
+	. "github.com/ice-judge/ICE/ice/api/router"
 	"github.com/stretchr/testify/assert"
 )
 

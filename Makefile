@@ -17,9 +17,7 @@ build-public:
 	cd ./ice/public && npm build
 
 test-go:
-	go vet ./ice/pkg
-	go vet ./ice/api 
-	go vet ./ice/scheduler
+	go vet ./ice/...
 	go test -cover -v ./ice/...
 
 deps: deps-go deps-js
