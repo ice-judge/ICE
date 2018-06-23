@@ -18,8 +18,8 @@ pipeline {
 	stages {
 		stage("Dependencys") {
 			steps {
-				sh "chmod 777 $GOPATH"
 				sh "mkdir -p $GOPATH/${orgPath}"
+				sh "chmod 777 $GOPATH"
 				sh "ln -f -s ${WORKSPACE} $GOPATH/${repoPath}"
 				sh "cd $GOPATH/${repoPath} ICE && make deps"
 			}
