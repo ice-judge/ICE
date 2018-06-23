@@ -4,6 +4,7 @@ def orgPath = "src/github.com/ice-judge"
 def repoPath = "${orgPath}/ICE"
 
 def pushImg(img) {
+	COMMIT = "${GIT_COMMIT.substring(0,8)}"
 	if ("${BRANCH_NAME}" == "master"){
 		img.push("latest")	
 	}
@@ -15,7 +16,6 @@ node {
 		stage("Checkout"){
 			checkout scm
 		}
-
 
 		def scheduler	
 		def judger
@@ -35,7 +35,6 @@ node {
 
 		stage("Publish to Docker") {
 			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				COMMIT = "${GIT_COMMIT.substring(0,8)}"
 				pushImg(scheduler)			
 				pushImg(web)			
 				pushImg(judger)			
