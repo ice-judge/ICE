@@ -21,7 +21,7 @@ node {
 	
 	stage("Unit Tests") {
 		sh "sleep 5"
-		sh "docker-compose exec -T scheduler_1 make test-go"
+		sh "docker-compose exec -T scheduler make test-go"
 	}
 
 	post {
