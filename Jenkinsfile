@@ -6,7 +6,7 @@ pipeline {
 	agent {
 		docker {
 			image "icejudge/build-agent"
-			args "-v ${env.WORKSPACE}:/go/src/github.com/ice-judge/ICE"
+			customWorkspace "/go/src/github.com/ice-judge/ICE"
 		}
 	}
 
