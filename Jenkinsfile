@@ -27,10 +27,7 @@ node {
 
 		stage("Publish to Docker") {
 			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				def COMMIT = "${GIT_COMMIT.substring(0,8)}"
-				scheduler.push("${BRANCH_NAME}-${COMMIT}")
-				web.push("${BRANCH_NAME}-${COMMIT}")
-				judger.push("${BRANCH_NAME}-${COMMIT}")
+				scheduler.push("${BRANCH_NAME}")
 			}
 		}
 	} catch (e) {
