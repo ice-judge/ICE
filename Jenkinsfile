@@ -23,4 +23,10 @@ node {
 		sh "sleep 5"
 		sh "docker-compose exec scheduler make test-go"
 	}
+
+	post {
+		always {
+				sh "docker-compose down || true"
+		}
+	}
 }	
