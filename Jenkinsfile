@@ -33,7 +33,7 @@ pipeline {
 
 		stage("Unit Test") {
 			steps {
-				sh "make test"
+				sh "cd $GOPATH/${repoPath} && make test"
 			}		
 		}
 	}
