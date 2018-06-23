@@ -21,7 +21,7 @@ node {
 		}
 		
 		stage("Unit Tests") {
-			sh "docker-compose exec -T scheduler make test-go", name: "Go Tests"
+			sh cmd: "docker-compose exec -T scheduler make test-go", name: "Go Tests"
 		}
 	} catch (e) {
 		throw e
