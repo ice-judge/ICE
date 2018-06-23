@@ -3,16 +3,16 @@
 String goPath = "/go/src/github.com/ice-judge/ICE"
 
 pipeline {
-	agent any
+	agent {
+		docker {
+			image "icejudge/build-agent"
+			args "-v ${env.WORKSPACE}:/go/src/github.com/ice-judge/ICE"
+		}
+	}
 
 	stages {
 		stage("Dependencys") {
 			agent {
-				docker {
-					image "icejudge/build-agent"
-					args 	'-v ${PWD}:/go/src/github.com/ice-judge/ICE'
-					reuseNode true
-				}
 			}
 
 			steps {
