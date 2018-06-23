@@ -13,8 +13,8 @@ node {
 	def web
 	
 	stage('Build') {
-		scheduler = docker.build("image", "./scheduler.Dockerfile")
-		web = docker.build("image3", "./web.Dockerfile")
-		judger = docker.build("image2", "./judger.Dockerfile")
+		scheduler = docker.build("image", "./scheduler.Dockerfile", ".")
+		web = docker.build("image3", "./web.Dockerfile", ".")
+		judger = docker.build("image2", "./judger.Dockerfile", ".")
 	}
 }
