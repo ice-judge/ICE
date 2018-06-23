@@ -1,4 +1,3 @@
-vendor
 *.exe
 *.dll
 *.so
@@ -7,8 +6,12 @@ vendor
 *.out
 *.swp
 *.bak
+*.swo
 
-# /public
+/out
 
-/public/node_modules
-/public/dist/*
+# go
+/ice/vendor
+
+# public
+/ice/public/node_modules
