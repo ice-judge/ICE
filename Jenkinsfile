@@ -6,17 +6,19 @@ pipeline {
 	agent {
 		docker {
 			image "icejudge/build-agent"
-			customWorkspace "/go/src/github.com/ice-judge/ICE"
+			customWorkspace "ice-judge"
 		}
 	}
 	
 	environment {
-		GOPATH = "/go"
+		GOPATH="${WORKSPACE}"
 	}
 
 	stages {
 		stage("Dependencys") {
 			steps {
+				sh "mkdir -p $GOPATH/src"
+				sh "ln -f -s ${WORKSPACE} $GOPATH/src/github.com/ice-judge/ICE"
 				sh "make deps"
 			}
 		}
