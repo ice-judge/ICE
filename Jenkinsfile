@@ -20,13 +20,20 @@ node {
 	}
 	
 	stage("Unit Tests") {
-		sh "sleep 5"
 		sh "docker-compose exec -T scheduler make test-go"
 	}
 
 	post {
 		always {
 			sh "docker-compose down || true"
+		}
+
+		success {
+				githubStatusNotify buildState: "SUCCESSFUL"
+		}
+
+		failure {
+				githubStatusNotify buildState: "FAILED"
 		}
 	}
 }	
