@@ -14,18 +14,20 @@ def setBuildStatus = { String message, String state ->
 
 String goPath = "/go/src/github.com/ice-judge/ICE"
  
-node('docker') {
-	setBuildStatus("building", "PENDING")
-
-	stage('checkout from gitHub') {
-		checkout scm
-	}
-
-	stage("build go") {
-		docker.image("golang:strecth").inside("-v ${pwd()}:${goPath}") {
-			sh "cd ${goPath}/scripts && ./go-build.sh"
+pipeline {
+	agent any 
+	stages {
+		stage("checkout") {
+			checkout scm
 		}
-  }
 
-	setBuildStatus("success", "SUCCESS")
+		setBuildStatus("building", "PENDING")
+		
+		stage("check changes") {
+
+		}	
+		
+		setBuildStatus("success", "SUCCESS")
+	}
 }
+	

@@ -2,9 +2,6 @@
 set -e
 set -x
 
-ROOTDIR=$1
-BINDIR=../bin
-
 PKG_C=$(./check-changes.sh pkg)
 API_C=$(./check-changes.sh api)
 SCH_C=$(./check-changes.sh scheduler)
@@ -18,14 +15,12 @@ fi
 
 # we can use makefile here
 gotest(){
-	go vet ../$1/...
-	go test -cover ../$1/...
+	go vet ../ice/$1/...
+	go test -cover ../ice/$1/...
 }
 
 gobuild(){
-	GOOS=linux GOARCH=amd64 go build -o $BINDIR/$1-amd64 ../$1
-	GOOS=linux GOARCH=arm go build -o $BINDIR/$1-arm ../$1
-	GOOS=linux GOARCH=386 go build -o $BINDIR/$1-i386 ../$1
+	go build ../ice/$1
 }
 
 (cd .. && dep ensure --vendor-only)
@@ -49,6 +44,6 @@ if [ $SCH_C = "yes" ]; then
 	gobuild scheduler
 	gotest scheduler
 	if [ $CI = "drone" ]; then 
-		mv $ROOTDIR/scheduler.Dockerfile $ROOTDIR/ci.scheduler.Dockerfile
+		mv ../scheduler.Dockerfile ../ci.scheduler.Dockerfile
 	fi
 fi
