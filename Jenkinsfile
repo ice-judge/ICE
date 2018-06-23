@@ -10,7 +10,7 @@ pipeline {
 			agent {
 				docker {
 					image "icejudge/build-agent"
-					args 	"-v ${PWD}:/go/src/github.com/ice-judge/ICE"
+					args 	'-v ${PWD}:/go/src/github.com/ice-judge/ICE'
 					reuseNode true
 				}
 			}
