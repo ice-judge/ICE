@@ -21,8 +21,13 @@ node {
 		}
 		
 		stage("Unit Tests") {
-			stage "Go Tests"
 			sh "docker-compose exec -T scheduler make test-go"
+		}
+
+		stage("Publish to Docker") {
+			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
+				scheduler.push()
+			}
 		}
 	} catch (e) {
 		throw e
