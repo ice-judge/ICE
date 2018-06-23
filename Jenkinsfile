@@ -10,7 +10,7 @@ pipeline {
 	}
 
 	environment {
-		GOPATH = "${pwd}"
+		GOPATH = "$WORKSPACE"
 	}
 
 	stages {
