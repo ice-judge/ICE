@@ -22,3 +22,5 @@ test-go:
 deps: deps-go deps-js
 
 build: build-scheduler build-api build-public build-judger
+
+test: test-go
