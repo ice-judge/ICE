@@ -10,7 +10,7 @@ pipeline {
 	}
 
 	environment {
-		GOPATH = "$WORKSPACE"
+		GOPATH = "/go"
 	}
 
 	stages {
