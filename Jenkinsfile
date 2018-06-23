@@ -13,6 +13,7 @@ pipeline {
 	
 	environment {
 		GOPATH="${WORKSPACE}/go"
+		npm_config_cache="npm-cache"
 	}
 
 	stages {
