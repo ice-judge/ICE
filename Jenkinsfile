@@ -28,7 +28,7 @@ node {
 
 		stage("Publish to Docker") {
 			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				def hash = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+				def hash = sh (script: "git log -n 1 --pretty=format:'%H' | cut -c1-9", returnStdout: true)
 				def tag = "${BRANCH_NAME}-${hash}"
 
 				scheduler.push("${tag}")
