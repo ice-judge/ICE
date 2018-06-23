@@ -12,9 +12,6 @@ pipeline {
 
 	stages {
 		stage("Dependencys") {
-			agent {
-			}
-
 			steps {
 				sh "make deps"
 			}
