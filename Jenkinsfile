@@ -1,7 +1,5 @@
 #!/usr/bin/env groovy
 
-
-
 def setBuildStatus = { String message, String state ->
   step([
       $class: "GitHubCommitStatusSetter",
@@ -14,6 +12,7 @@ def setBuildStatus = { String message, String state ->
 
 String goPath = "/go/src/github.com/ice-judge/ICE"
  
+setBuildStatus("building", "PENDING")
 pipeline {
 	agent any 
 	stages {
@@ -21,13 +20,7 @@ pipeline {
 			checkout scm
 		}
 
-		setBuildStatus("building", "PENDING")
-		
-		stage("check changes") {
-
-		}	
-		
-		setBuildStatus("success", "SUCCESS")
 	}
 }
 	
+setBuildStatus("building", "SUCCESS")
