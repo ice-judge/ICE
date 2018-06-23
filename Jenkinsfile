@@ -6,12 +6,12 @@ pipeline {
 	agent {
 		docker {
 			image "icejudge/build-agent"
-			customWorkspace "${env.WORKSPACE}/go/src/github.com/ice-judge/ICE"
+			customWorkspace "${env.HOME}/go/src/github.com/ice-judge/ICE"
 		}
 	}
 	
 	environment {
-		GOPATH = "${env.WORKSPACE}/go"
+		GOPATH = "${env.HOME}/go"
 	}
 
 	stages {
