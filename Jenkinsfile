@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+import hudson.model.*
 
 def orgPath = "src/github.com/ice-judge"
 def repoPath = "${orgPath}/ICE"
@@ -27,14 +28,15 @@ node {
 
 		stage("Publish to Docker") {
 			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				def commit = "${GIT_COMMIT}".substring(0,8)
-				def tag = "${BRANCH_NAME}-${commit}"
+				def hash = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+				def tag = "${BRANCH_NAME}-${hash}"
 
 				scheduler.push("${tag}")
 				web.push("${tag}")
 				judger.push("${tag}")
 			}
 		}
+
 	} catch (e) {
 		throw e
 	} finally {
