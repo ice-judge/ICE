@@ -3,14 +3,14 @@
 String goPath = "/go/src/github.com/ice-judge/ICE"
 
 pipeline {
-	agent none
+	agent any
 
 	stages {
 		stage("Dependencys") {
 			agent {
 				docker {
 					image "icejudge/build-agent"
-					args 	"-v ${WORKSPACE}:/go/src/github.com/ice-judge/ICE"
+					args 	"-v ${PWD}:/go/src/github.com/ice-judge/ICE"
 					reuseNode true
 				}
 			}
