@@ -1,7 +1,18 @@
 #!/usr/bin/env groovy
 
-String orgPath = "src/github.com/ice-judge"
-String repoPath = "${orgPath}/ICE"
+def orgPath = "src/github.com/ice-judge"
+def repoPath = "${orgPath}/ICE"
+
+def schedulerImg = "icejudge/scheduler"
+def webImg = "icejudge/web
+def judgerImg = "icejudge/judeger"
+
+def pushImg(img) {
+	if ("${BRANCH_NAME}" == "master"){
+		img.push("latest")	
+	}
+	img.push("${BRANCH_NAME}-${COMMIT}")
+}
 
 node {
 	try {
@@ -9,14 +20,15 @@ node {
 			checkout scm
 		}
 
+
 		def scheduler	
 		def judger
 		def web
 		
 		stage("Build") {
-			scheduler = docker.build("icejudge/scheduler", "-f ./scheduler.Dockerfile .")
-			//web = docker.build("icejudge/web", "-f ./web.Dockerfile .")
-			//judger = docker.build("icejudge/judger", "-f ./judger.Dockerfile .")
+			scheduler = docker.build(schedulerImg, "-f ./scheduler.Dockerfile .")
+			web = docker.build("icejudge/web", "-f ./web.Dockerfile .")
+			judger = docker.build("icejudge/judger", "-f ./judger.Dockerfile .")
 			sh "docker-compose up -d"
 		}
 		
@@ -26,7 +38,10 @@ node {
 
 		stage("Publish to Docker") {
 			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				scheduler.push()
+				COMMIT = "${GIT_COMMIT.substring(0,8)}"
+				pushImg(scheduler)			
+				pushImg(web)			
+				pushImg(judger)			
 			}
 		}
 	} catch (e) {
