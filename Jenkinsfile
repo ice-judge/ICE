@@ -9,18 +9,16 @@ node {
 	}
 
 	def scheduler	
-	def judger
-	def web
+	//def judger
+	//def web
 	
 	stage("Build") {
 		scheduler = docker.build("icejudge/scheduler", "-f ./scheduler.Dockerfile .")
-		web = docker.build("icejudge/web", "-f ./web.Dockerfile .")
-		judger = docker.build("icejudge/judger", "-f ./judger.Dockerfile .")
-	}
-
-	stage("Test") {
+		//web = docker.build("icejudge/web", "-f ./web.Dockerfile .")
+		//judger = docker.build("icejudge/judger", "-f ./judger.Dockerfile .")
 		scheduler.inside {
 			sh "make test-go"
 		}
 	}
+
 }
