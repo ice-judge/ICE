@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 
-String goPath = "/go/src/github.com/ice-judge/ICE"
+String orgPath = "src/github.com/ice-judge"
+String repoPath = "${orgPath}/ICE"
 
 pipeline {
 	agent {
@@ -17,9 +18,9 @@ pipeline {
 	stages {
 		stage("Dependencys") {
 			steps {
-				sh "mkdir -p $GOPATH/src/github.com/ice-judge"
-				sh "ln -f -s ${WORKSPACE} $GOPATH/src/github.com/ice-judge/ICE"
-				sh "cd $GOPATH/src/github.com/ice-judge/ICE && make deps"
+				sh "mkdir -p $GOPATH/${orgPath}"
+				sh "ln -f -s ${WORKSPACE} $GOPATH/${repoPath}"
+				sh "cd $GOPATH/${repoPath} ICE && make deps"
 			}
 		}
 
