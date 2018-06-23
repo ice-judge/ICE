@@ -16,7 +16,7 @@ pipeline {
 	stages {
 		stage("Dependencys") {
 			steps {
-				sh "mkdir -p $GOPATH/src/github.com/ice-judge/ICE"
+				sh "mkdir -p $GOPATH/src/github.com/ice-judge"
 				sh "ln -sf ${WORKSPACE} $GOPATH/src/github.com/ice-judge/ICE"
 				sh "make deps"
 			}
