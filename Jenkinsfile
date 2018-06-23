@@ -4,7 +4,7 @@ String orgPath = "src/github.com/ice-judge"
 String repoPath = "${orgPath}/ICE"
 
 node {
-	stage('Checkout'){
+	stage("Checkout"){
 		checkout scm
 	}
 
@@ -12,9 +12,15 @@ node {
 	def judger
 	def web
 	
-	stage('Build') {
+	stage("Build") {
 		scheduler = docker.build("image", "-f ./scheduler.Dockerfile .")
 		web = docker.build("image3", "-f ./web.Dockerfile .")
 		judger = docker.build("image2", "-f ./judger.Dockerfile .")
+	}
+
+	stage("Test") {
+		scheduler.inside {
+			sh "make test-go"
+		}
 	}
 }
