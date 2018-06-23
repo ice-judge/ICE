@@ -28,9 +28,14 @@ node {
 
 		stage("Publish to Docker") {
 			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				def hash = sh (script: "git log -n 1 --pretty=format:'%H' | cut -c1-9", returnStdout: true)
-				def tag = "${BRANCH_NAME}-${hash}"
+				if ("${BRANCH_NAME}" == "master") {
+					scheduler.push("latest")
+					web.push("latest")
+					judger.push("latest")
+				}
 
+				def hash = sh (script: "git log -n 1 --pretty=format:'%H' | cut -c1-8", returnStdout: true)
+				def tag = "${BRANCH_NAME}-${hash}"
 				scheduler.push("${tag}")
 				web.push("${tag}")
 				judger.push("${tag}")
