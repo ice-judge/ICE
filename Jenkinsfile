@@ -21,13 +21,14 @@ pipeline {
 			steps {
 				sh "mkdir -p $GOPATH/${orgPath}"
 				sh "ln -f -s ${WORKSPACE} $GOPATH/${repoPath}"
-				sh "cd $GOPATH/${repoPath} ICE && make deps"
+
+				sh "cd $GOPATH/${repoPath} && make deps"
 			}
 		}
 
 		stage("Build") {
 			steps {
-				sh "make build"				
+				sh "cd $GOPATH/{$repoPath} && make build"				
 			}
 		}
 
