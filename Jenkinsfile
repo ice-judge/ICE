@@ -21,12 +21,12 @@ node {
 	
 	stage("Unit Tests") {
 		sh "sleep 5"
-		sh "docker-compose exec scheduler make test-go"
+		sh "docker-compose exec -T scheduler_1 make test-go"
 	}
 
 	post {
 		always {
-				sh "docker-compose down || true"
+			sh "docker-compose down || true"
 		}
 	}
 }	
