@@ -31,7 +31,7 @@ node {
 				if ("${BRANCH_NAME}" == "master"){
 					scheduler.push("latest")	
 					web.push("latest")	
-					judge.push("latest")	
+					judger.push("latest")	
 				}
 				scheduler.push("${BRANCH_NAME}-${COMMIT}")
 				web.push("${BRANCH_NAME}-${COMMIT}")
