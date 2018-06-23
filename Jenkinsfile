@@ -19,7 +19,7 @@ pipeline {
 			steps {
 				sh "mkdir -p $GOPATH/src/github.com/ice-judge"
 				sh "ln -f -s ${WORKSPACE} $GOPATH/src/github.com/ice-judge/ICE"
-				sh "cd $GOPATH/src/github.co/ice-judge && make deps"
+				sh "cd $GOPATH/src/github.com/ice-judge/ICE && make deps"
 			}
 		}
 
