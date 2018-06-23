@@ -9,6 +9,10 @@ pipeline {
 		}
 	}
 
+	environment {
+		GOPATH = "${pwd}"
+	}
+
 	stages {
 		stage("Dependencys") {
 			steps {
