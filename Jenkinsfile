@@ -27,8 +27,8 @@ node {
 
 		stage("Publish to Docker") {
 			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				COMMIT = "${GIT_COMMIT.substring(0,8)}"
-				if ("${BRANCH_NAME}" == "master"){
+				def COMMIT = "${GIT_COMMIT.substring(0,8)}"
+				if ("${BRANCH_NAME}" == "master") {
 					scheduler.push("latest")	
 					web.push("latest")	
 					judger.push("latest")	

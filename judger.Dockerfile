@@ -1,8 +1,8 @@
 FROM gcc
 
 WORKDIR /ice-judge
-ADD . .
 
+ADD . .
 RUN make build-judger \
 	&& mv ./ice/judger/out/judger /
 
