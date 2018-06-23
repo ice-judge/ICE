@@ -1,4 +1,5 @@
-FROM gcc
-WORKDIR /home
-ADD bin/scheduler .
-CMD ["/home/scheduler"]
+FROM alpine
+
+ADD ./ice/judger/out/judger /
+
+CMD ["/judger"]

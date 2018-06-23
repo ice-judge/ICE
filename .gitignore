@@ -8,11 +8,10 @@
 *.bak
 *.swo
 
-bin
+/out
 
 # go
-vendor
+/ice/vendor
 
 # public
-/public/node_modules
-/public/dist/*
+/ice/public/node_modules

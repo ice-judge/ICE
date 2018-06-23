@@ -1,4 +1,5 @@
 FROM alpine
-WORKDIR /home
-ADD bin/scheduler-amd64 .
-CMD ["/home/scheduler-amd64"]
+
+ADD ./ice/scheduler/scheduler /
+
+CMD ["/scheduler"]
