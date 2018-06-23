@@ -1,5 +1,9 @@
-FROM alpine
+FROM gcc
 
-ADD ./ice/judger/out/judger /
+WORKDIR /ice-judge
+ADD . .
+
+RUN make build-judger \
+	&& mv ./ice/judger/out/judger /
 
 CMD ["/judger"]

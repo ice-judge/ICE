@@ -5,10 +5,10 @@ FLAGS = -std=c++17 -lstdc++fs
 all: debug
 
 debug: main.cpp
-	$(CC) main.cpp -o $(OUTDIR)/debug-evaluator $(FLAGS)
+	$(CC) main.cpp -o $(OUTDIR)/debug-judger $(FLAGS)
 
 release: main.cpp
-	$(CC) main.cpp -o $(OUTDIR)/evaluator $(FLAGS)
+	$(CC) main.cpp -o $(OUTDIR)/judger $(FLAGS)
 
 clean:
 	rm -rf ./$(OUTDIR)/*

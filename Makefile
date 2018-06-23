@@ -8,10 +8,10 @@ build-judger:
 	cd ./ice/judger && mkdir out && make release
 
 build-scheduler:
-	go build ./ice/scheduler
+	cd ice/scheduler && go build
 
 build-api:
-	go build ./ice/api
+	cd ice/api && go build
 
 build-public:
 	cd ./ice/public && npm build
