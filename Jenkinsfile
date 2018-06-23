@@ -14,8 +14,8 @@ node {
 	
 	stage("Build") {
 		scheduler = docker.build("icejudge/scheduler", "-f ./scheduler.Dockerfile .")
-		web = docker.build("icejudge/web", "-f ./web.Dockerfile .")
-		judger = docker.build("icejudge/judger", "-f ./judger.Dockerfile .")
+		//web = docker.build("icejudge/web", "-f ./web.Dockerfile .")
+		//judger = docker.build("icejudge/judger", "-f ./judger.Dockerfile .")
 		sh "docker-compose up -d"
 	}
 	
