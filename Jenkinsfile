@@ -27,10 +27,5 @@ pipeline {
 				sh "make test"
 			}		
 		}
-	
-
-		stage("Publish to Docker") {
-			
-		}
 	}
 }
