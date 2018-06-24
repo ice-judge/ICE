@@ -2,13 +2,7 @@
 import hudson.model.*
 
 pipeline {
-	agent {
-		docker {
-			image "ksunhokim/jnlp"
-			registryUrl "https://docker.io"
-			registryCredentialsId "icejudge-docker-credentials"
-		}
-	}
+	agent any
 
   stages {
     stage("Build") {
@@ -26,7 +20,11 @@ pipeline {
 
 		stage("Publish to Docker") {
 			steps {
-				sh "scripts/docker.sh push"
+				script {
+					docker.withRegistry("", "icejudge-docker-credentials") {
+						sh "scripts/docker.sh push"
+					}
+				}
 			}
 		}
 	}
