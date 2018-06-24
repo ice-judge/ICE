@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"strconv"
 	"time"
 
@@ -19,7 +19,7 @@ func parseConfig() server.Config {
 
 	GracefulTimeout, err := strconv.Atoi(GracefulTimeout_)
 	if err != nil {
-		log.Fatalf("Ivalid GRACEFUL_TIMEOUT: %s", GracefulTimeout_)
+		panic(fmt.Sprintf("Ivalid GRACEFUL_TIMEOUT: %s", GracefulTimeout_))
 	}
 
 	return server.Config{

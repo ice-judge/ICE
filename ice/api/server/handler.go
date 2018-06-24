@@ -6,7 +6,7 @@ import (
 	"github.com/go-chi/chi"
 )
 
-func (s *Server) newHandler() http.Handler {
+func (s *Server) NewHandler() http.Handler {
 	r := chi.NewRouter()
 	r.Route("/assets", s.registerAssets)
 

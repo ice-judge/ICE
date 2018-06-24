@@ -55,6 +55,12 @@ func (s *Server) newLocalFileHandler() func(http.ResponseWriter, *http.Request) 
 		// wildcard parameter
 		file := chi.URLParam(r, "*")
 
+		// to disable default root page of http.FileServer
+		if file == "" {
+			http.Error(w, http.StatusText(404), 404)
+			return
+		}
+
 		url_, err := url.Parse(file)
 		if err != nil {
 			http.Error(w, http.StatusText(404), 404)

@@ -14,6 +14,37 @@
   version = "v1.3.2"
 
 [[projects]]
+  name = "github.com/go-chi/chi"
+  packages = ["."]
+  revision = "e83ac2304db3c50cf03d96a2fcd39009d458bc35"
+  version = "v3.3.2"
+
+[[projects]]
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
+
+[[projects]]
+  name = "go.uber.org/zap"
+  packages = [
+    ".",
+    "buffer",
+    "internal/bufferpool",
+    "internal/color",
+    "internal/exit",
+    "zapcore"
+  ]
+  revision = "eeedf312bc6c57391d84767a4cd413f02a917974"
+  version = "v1.8.0"
+
+[[projects]]
+  name = "go.uber.org/atomic"
+  packages = ["."]
+  revision = "1ea20fb1cbb1cc08cbd0d913a96dead89aa18289"
+  version = "v1.3.2"
+
+[[projects]]
   name = "go.uber.org/multierr"
   packages = ["."]
   revision = "3c4937480c32f4c13a875a1829af76c98ca3d40a"
@@ -35,6 +66,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "84b3c14238c1b7872fabc0d803b60a4d7e664d75da66ee031b4ecfb9434273fb"
+  inputs-digest = "30d6709e46dceb6338c6da6202f8d96789bcff8ff80a318e05c8712afd4aebd5"
   solver-name = "gps-cdcl"
   solver-version = 1

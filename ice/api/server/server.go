@@ -45,7 +45,7 @@ func newHTTPServer(s *Server, logger *log.Logger) *http.Server {
 	return &http.Server{
 		Addr:     s.config.Addr,
 		ErrorLog: logger,
-		Handler:  s.newHandler(),
+		Handler:  s.NewHandler(),
 	}
 }
 
