@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage("Build") {
 			steps {
-				sh "docker build -t icejudge/scheduler -f scheduler.Dockerfile ."
+				sh "docker build -t icejudge/web -f scheduler.Dockerfile ."
 			}
 		}
 
