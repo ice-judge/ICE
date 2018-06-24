@@ -5,11 +5,7 @@ def hash = sh (script: "git log -n 1 --pretty=format:'%H' | cut -c1-8", returnSt
 def tag = "${BRANCH_NAME}-${hash}"
 
 pipeline {
-	agent {
-		docker {
-			registryCredentialsId "icejudge-docke-credentials"
-		}
-	}
+	agent any
 
   stages {
     stage("Build") {
@@ -26,7 +22,13 @@ pipeline {
 		}
 
 		stage("Publish to Docker") {
-			sh "scripts/docker.sh push"
+			steps {
+				script {
+					withDockerRegistry([credentialsId: 'docker-registry-credentials']) {
+						sh "scripts/docker.sh push"
+					}
+				}
+			}
 		}
 	}
 
