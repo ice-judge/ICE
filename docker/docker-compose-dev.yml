@@ -4,5 +4,7 @@ services:
     image: icejudge/scheduler
   web:
     image: icejudge/web
+    volumes:
+      - ${PWD}/ice/public/dist:/dist
     ports:
       - 8080:8080

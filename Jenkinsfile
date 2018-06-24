@@ -1,53 +1,41 @@
 #!/usr/bin/env groovy
 import hudson.model.*
 
-def orgPath = "src/github.com/ice-judge"
-def repoPath = "${orgPath}/ICE"
+pipeline {
+	agent any
 
-node {
-	try {
-		stage("Checkout"){
-			checkout scm
-		}
-
-		def scheduler	
-		def judger
-		def web
-		
-		stage("Build") {
-			scheduler = docker.build("icejudge/scheduler", "-f ./scheduler.Dockerfile .")
-			web = docker.build("icejudge/web", "-f ./web.Dockerfile .")
-			judger = docker.build("icejudge/judger", "-f ./judger.Dockerfile .")
-
-			sh "docker-compose up -d"
-		}
-		
-		stage("Unit Tests") {
-			sh "docker-compose exec -T scheduler make test-go"
-		}
-
-		stage("Publish to Docker") {
-			withDockerRegistry([ credentialsId: "icejudge-docke-credentials", url: "" ]) {
-				if ("${BRANCH_NAME}" == "master") {
-					scheduler.push("latest")
-					web.push("latest")
-					judger.push("latest")
-				}
-
-				def hash = sh (script: "git log -n 1 --pretty=format:'%H' | cut -c1-8", returnStdout: true)
-				def tag = "${BRANCH_NAME}-${hash}"
-				scheduler.push("${tag}")
-				web.push("${tag}")
-				judger.push("${tag}")
+  stages {
+    stage("Build") {
+			steps {
+				sh "scripts/docker.sh build"
 			}
 		}
 
-	} catch (e) {
-		throw e
-	} finally {
-		withCredentials([string(credentialsId: "icejudge-discord-webhook", variable: "url")]) {
-			discordSend description: "Jenkins Build", link: env.RUN_DISPLAY_URL, successful: currentBuild.resultIsBetterOrEqualTo("SUCCESS"), title: JOB_NAME, webhookURL: "${url}"
+		stage("Unit Test") {
+			steps {
+				sh "mkdir reports"
+				sh "docker-compose -f docker/docker-compose-test-go-js.yml run web make test-go 2>&1 | go-junit-report > reports/go.xml"
+			}
 		}
-		sh "docker-compose down || true"
+
+		stage("Publish to Docker") {
+			steps {
+				script {
+					docker.withRegistry("", "icejudge-docker-credentials") {
+						sh "scripts/docker.sh push"
+					}
+				}
+			}
+		}
 	}
-}	
+
+	post {
+		always {
+			withCredentials([string(credentialsId: "icejudge-discord-webhook", variable: "url")]) {
+				discordSend description: "Jenkins Build", footer: "Jenkins", link: env.RUN_DISPLAY_URL, successful: currentBuild.resultIsBetterOrEqualTo("SUCCESS"), title: JOB_NAME, webhookURL: url
+			}
+			junit "reports/*.xml"
+			archiveArtifacts "reports/*.xml"
+		}
+	}
+}
