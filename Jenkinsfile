@@ -6,7 +6,7 @@ pipeline {
 		docker {
 			image "ksunhokim/jnlp"
 			registryUrl "https://docker.io"
-			registryCredentialsId "docker-registry-credentials"
+			registryCredentialsId "	icejudge-docker-credentials"
 		}
 	}
 
