@@ -1,6 +1,7 @@
 package server
 
 import (
+	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -54,6 +55,13 @@ func (s *Server) newLocalFileHandler() func(http.ResponseWriter, *http.Request) 
 	return func(w http.ResponseWriter, r *http.Request) {
 		// wildcard parameter
 		file := chi.URLParam(r, "*")
+
+		log.Println(file)
+		// to disable default root page of http.FileServer
+		if file == "" {
+			http.Error(w, http.StatusText(404), 404)
+			return
+		}
 
 		url_, err := url.Parse(file)
 		if err != nil {
