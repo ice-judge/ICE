@@ -1,9 +1,6 @@
 #!/usr/bin/env groovy
 import hudson.model.*
 
-def hash = sh (script: "git log -n 1 --pretty=format:'%H' | cut -c1-8", returnStdout: true)
-def tag = "${BRANCH_NAME}-${hash}"
-
 pipeline {
 	agent any
 
@@ -21,15 +18,6 @@ pipeline {
 			}
 		}
 
-		stage("Publish to Docker") {
-			steps {
-				script {
-					withDockerRegistry([credentialsId: 'docker-registry-credentials']) {
-						sh "scripts/docker.sh push"
-					}
-				}
-			}
-		}
 	}
 
 	post {
