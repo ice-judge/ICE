@@ -11,7 +11,6 @@ pipeline {
     stage("Build") {
 			steps {
 				sh "docker build -t icejudge/scheduler -f scheduler.Dockerfile ."
-				sh "docker-compose up -d"
 			}
 		}
 
@@ -25,9 +24,8 @@ pipeline {
 
 	post {
 		always {
-			archiveArtifacts "reports/*.xml"
 			junit "reports/*.xml"
-			sh "docker-compose down || true"
+			archiveArtifacts "reports/*.xml"
 		}
 	}
 }
