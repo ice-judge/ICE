@@ -1,16 +1,20 @@
 #!/usr/bin/env groovy
 import hudson.model.*
 
-def orgPath = "src/github.com/ice-judge"
-def repoPath = "${orgPath}/ICE"
+def hash = sh (script: "git log -n 1 --pretty=format:'%H' | cut -c1-8", returnStdout: true)
+def tag = "${BRANCH_NAME}-${hash}"
 
 pipeline {
-  agent any
+	agent {
+		docker {
+			registryCredentialsId "icejudge-docke-credentials"
+		}
+	}
 
   stages {
     stage("Build") {
 			steps {
-				sh "docker build -t icejudge/web -f scheduler.Dockerfile ."
+				sh "scripts/docker.sh build"
 			}
 		}
 
@@ -19,6 +23,10 @@ pipeline {
 				sh "mkdir reports"
 				sh "docker-compose -f docker/docker-compose-test-go-js.yml run web make test-go 2>&1 | go-junit-report > reports/go.xml"
 			}
+		}
+
+		stage("Publish to Docker") {
+			sh "scripts/docker.sh push"
 		}
 	}
 
