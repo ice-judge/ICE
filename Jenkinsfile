@@ -31,6 +31,9 @@ pipeline {
 
 	post {
 		always {
+			withCredentials([string(credentialsId: "icejudge-discord-webhook", variable: "url")]) {
+				discordSend description: "Jenkins Build", footer: "Jenkins", link: env.RUN_DISPLAY_URL, successful: currentBuild.resultIsBetterOrEqualTo("SUCCESS"), title: JOB_NAME, webhookURL: url
+			}
 			junit "reports/*.xml"
 			archiveArtifacts "reports/*.xml"
 		}
