@@ -8,10 +8,14 @@
 *.bak
 *.swo
 
-/out
+# cpp
+/ice/judger/out
 
 # go
 /ice/vendor
+/ice/api/api
+/ice/api/scheduler
 
 # public
 /ice/public/node_modules
+/ice/public/dist
