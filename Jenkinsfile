@@ -17,7 +17,7 @@ pipeline {
 		stage("Unit Test") {
 			steps {
 				sh "mkdir reports"
-				sh "docker-compose -f docker/docker-compose-test-go-js.yml make test-go 2>&1 | go-junit-report > reports/go.xml"
+				sh "docker-compose -f docker/docker-compose-test-go-js.yml run make test-go 2>&1 | go-junit-report > reports/go.xml"
 			}
 		}
 	}
