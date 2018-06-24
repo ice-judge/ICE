@@ -2,7 +2,12 @@
 import hudson.model.*
 
 pipeline {
-	agent any
+	agent {
+		docker {
+			image "ksunhokim/jnlp"
+			registryCredentialsId "docker-registry-credentials"
+		}
+	}
 
   stages {
     stage("Build") {
@@ -18,6 +23,11 @@ pipeline {
 			}
 		}
 
+		stage("Publish to Docker") {
+			steps {
+				sh "scripts/docker.sh push"
+			}
+		}
 	}
 
 	post {
