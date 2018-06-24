@@ -5,6 +5,7 @@ pipeline {
 	agent {
 		docker {
 			image "ksunhokim/jnlp"
+			registryUrl "https://docker.io"
 			registryCredentialsId "docker-registry-credentials"
 		}
 	}

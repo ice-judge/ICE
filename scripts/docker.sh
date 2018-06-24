@@ -6,6 +6,7 @@ repos=( judger scheduler web )
 push() {
 	for repo in "${repos[@]}"
 	do
+		echo "%%%%%%%%%pushing $repo:$1"
 		docker tag icejudge/$repo:$1 icejudge/$repo
 		docker push icejudge/$repo:$1
 	done
@@ -14,6 +15,7 @@ push() {
 if [[ $1 == "build" ]]; then
 	for repo in "${repos[@]}"
 	do
+		echo "%%%%%%%%%building $repo"
 		docker build -t icejudge/$repo -f $repo.Dockerfile .
 	done
 fi
