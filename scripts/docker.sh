@@ -9,7 +9,7 @@ push() {
 		echo -e "\n\n"
 		echo "%%%%%%%%%pushing $repo:$1"
 		echo -e "\n\n"
-		docker tag icejudge/$repo:$1 icejudge/$repo
+		docker tag $1 icejudge/$repo
 		docker push icejudge/$repo:$1
 	done
 }

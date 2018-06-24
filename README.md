@@ -4,6 +4,7 @@
 Integrated Code Evaluator
 
 ## Run
+
 You can run ice-judge by
 ```
 docker-compose up
@@ -16,4 +17,9 @@ scripts/dev-compose-up.sh
 ```
 This acts similarly but the site will use the host's ice/public/dist for assets and expose every service to  the outside. Basically this will reduce the need to rebuild the images.
 
+## Update
 
+You can download latest images by 
+```
+docker-compose pull
+```
