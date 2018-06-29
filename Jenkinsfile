@@ -3,9 +3,8 @@ import hudson.model.*
 
 pipeline {
 	agent any
-
-  stages {
-    stage("Build") {
+	stages {
+		stage("Build") {
 			steps {
 				sh "scripts/docker.sh build"
 			}
